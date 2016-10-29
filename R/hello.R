@@ -20,4 +20,7 @@ hello <- function() {
 hello()
 install.packages("RMySQL")
 library(RMySQL)
-mydb = dbConnect(MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
+# mydb = dbConnect(MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
+rs=dbSendQuery(mydb, "select * from travistorrent limit 1")
+data = fetch(rs, n=1)
+print(data)
