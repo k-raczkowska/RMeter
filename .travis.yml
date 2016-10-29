@@ -1,3 +1,4 @@
 language: r
 cache: packages
 services: mysql
+before-script: mysql -e 'create database travistorrent;'
