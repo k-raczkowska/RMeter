@@ -19,3 +19,4 @@ hello <- function() {
 
 hello()
 install.packages("RMySQL")
+library(RMySQL)
