@@ -1,6 +1,6 @@
 # Hello, world!
 #
-# This is an example function named 'hello' 
+# This is an example function named 'hello'
 # which prints 'Hello, world!'.
 #
 # You can learn more about package authoring with RStudio at:
@@ -16,3 +16,9 @@
 hello <- function() {
   print("Hello, world!")
 }
+
+hello()
+install.packages("RMySQL")
+library(RMySQL)
+mydb = dbConnect(MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
+dbSendQuery(mydb, "select git_commit from travistorrent limit 1")
