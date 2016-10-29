@@ -1,4 +1,5 @@
 language: r
 cache: packages
 services: mysql
-before-script: mysql -e 'create database travistorrent;'
+before-script:
+- mysql -u root -e "create database travistorrent;"
