@@ -28,6 +28,3 @@ mydb = dbConnect(MySQL(), user = 'root', dbname = 'travistorrent', host = 'local
 #rs=dbSendQuery(mydb, "select * from travistorrent limit 1")
 #data = fetch(rs, n=1)
 #print(data)
-
-library(devtools)
-use_testthat()
