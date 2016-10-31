@@ -6,3 +6,5 @@ services:
   - mysql
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS travistorrent;" -uroot
+install:
+  - ./travis-tool.sh github_package hadley/testthat

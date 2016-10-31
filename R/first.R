@@ -13,11 +13,11 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-hello2 <- function() {
+printing <- function() {
   print("Hello, world!")
 }
 #hello
-hello2()
+printing()
 install.packages("RMySQL")
 install.packages("testthat")
 install.packages("devtools")
