@@ -1,6 +1,5 @@
 language: r
 services:
 - mysql
-before-script:
-- mysql -u root -e "create database baza;"
-- mysql -u root -p baza < dump.sql
+before-install:
+- mysql -e "create database IF NOT EXISTS baza;"
