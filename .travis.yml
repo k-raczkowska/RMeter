@@ -1,5 +1,7 @@
 language: r
+cache: packages
+sudo: false
 services:
-- mysql
-before-install:
-- mysql -e 'create database IF NOT EXISTS baza;'
+  - mysql
+before_install:
+  - mysql -e "CREATE DATABASE IF NOT EXISTS baza;" -uroot
