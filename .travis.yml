@@ -3,3 +3,4 @@ cache: packages
 services: mysql
 before-script:
 - mysql -e "create database baza;"
+- mysql -u root -p baza < dump.sql
