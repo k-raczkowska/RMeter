@@ -1,6 +1,6 @@
 language: r
-cache: packages
-services: mysql
+services:
+- mysql
 before-script:
-- mysql -e "create database baza;"
+- mysql -u root -e "create database baza;"
 - mysql -u root -p baza < dump.sql
