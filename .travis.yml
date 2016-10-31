@@ -2,4 +2,4 @@ language: r
 cache: packages
 services: mysql
 before-script:
-- mysql -u root -e "create database baza;"
+- mysql -e "create database baza;"
