@@ -6,11 +6,9 @@ services:
   - mysql
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS travistorrent;" -uroot
-
 r_packages:
- - devtools
- - testthat
-
+  - devtools
+  - testthat
 r_github_packages:
- - hadley/devtools
-- hadley/testthat
+  - hadley/devtools
+  - hadley/testthat
