@@ -5,4 +5,4 @@ sudo: false
 services:
   - mysql
 before_install:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS baza;" -uroot
+  - mysql -e "CREATE DATABASE IF NOT EXISTS travistorrent;" -uroot
