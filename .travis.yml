@@ -2,4 +2,4 @@ language: r
 services:
 - mysql
 before-install:
-- mysql -e "create database IF NOT EXISTS baza;"
+- mysql -e 'create database IF NOT EXISTS baza;'
