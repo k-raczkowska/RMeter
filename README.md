@@ -1,2 +1,2 @@
 # RMeter
-# MMSE 2016 project
+# MMSE 2016 project.
