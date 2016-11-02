@@ -15,6 +15,7 @@
 
 printing <- function() {
   print("Hello, world!")
+  print("Hello, world!")
 }
 printing()
 install.packages("RMySQL")
