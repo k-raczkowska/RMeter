@@ -6,6 +6,7 @@ services:
   - mysql
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS travistorrent;" -uroot
+  - mysql -e travistorrent < database/new_data.sql
 r_packages:
   - devtools
   - testthat
