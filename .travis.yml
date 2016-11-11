@@ -6,7 +6,7 @@ services:
   - mysql
 before_script:
   - mysql -u root -e 'CREATE DATABASE travistorrent;'
-  - mysql -u root travistorrent < database/test.sql
+  - mysql -u root travistorrent < database/new_data.sql
 r_packages:
   - devtools
   - testthat
