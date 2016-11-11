@@ -6,9 +6,7 @@ services:
   - mysql
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS travistorrent;" -uroot
-before_script:
-  - mysql -u root -e 'CREATE DATABASE testbase;'
-  - mysql -u root testbase < database/test.sql
+  - mysql -e travistorrent < database/test.sql
 r_packages:
   - devtools
   - testthat
