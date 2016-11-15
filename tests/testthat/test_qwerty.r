@@ -1,5 +1,5 @@
 library(testthat)
-install.packages("RMySQL", repos='http://cran.us.r-project.org')
+#install.packages("RMySQL", repos='http://cran.us.r-project.org')
 
 
 test_that("Otwieranie i zamykanie połączenia do bazy danych", {
