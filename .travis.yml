@@ -12,9 +12,7 @@ before_script:
 r_packages:
   - devtools
   - testthat
-  - RMySQL
 r_github_packages:
   - hadley/devtools
   - hadley/testthat
-  - rstats-db/RMySQL
 
