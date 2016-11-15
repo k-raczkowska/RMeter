@@ -2,6 +2,8 @@ warnings_are_errors: false
 language: r
 cache: packages
 sudo: false
+install:
+  - Rscript -e 'install.packages("RMySQL", repos = "http://cran.rstudio.com")'
 services:
   - mysql
 before_script:
