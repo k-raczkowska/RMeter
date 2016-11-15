@@ -3,6 +3,7 @@ language: r
 cache: packages
 sudo: false
 install:
+  - Rscript -e 'install.packages("devtools", repos = "http://cran.rstudio.com")'
   - Rscript -e 'install.packages("RMySQL", repos = "http://cran.rstudio.com")'
 services:
   - mysql
