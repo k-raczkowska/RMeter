@@ -2,6 +2,9 @@ warnings_are_errors: false
 language: r
 cache: packages
 sudo: false
+env:
+  global:
+    - CRAN: http://cran.rstudio.com
 services:
   - mysql
 before_script:
@@ -13,3 +16,6 @@ r_packages:
 r_github_packages:
   - hadley/devtools
   - hadley/testthat
+  
+r_binary_packages:
+  - RMySQL
