@@ -15,16 +15,13 @@
 
 printing <- function() {
   print("Hello, world!")
-  print("Hello, world!")
 }
 printing()
 install.packages("RMySQL")
 install.packages("testthat")
 install.packages("devtools")
 library(RMySQL)
-#mydb = dbConnect(MySQL(), user = 'root', password = 'master', host = 'localhost')
-mydb = dbConnect(MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
-#mydb = dbConnect(MySQL(), user='root', dbname='baza', password='', host='localhost')
-#rs=dbSendQuery(mydb, "select * from travistorrent limit 1")
-#data = fetch(rs, n=1)
-#print(data)
+mydb = dbConnect(MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
+rs=dbSendQuery(mydb, "select count(*) from travistorrent_27_10_2016")
+data = fetch(rs, n=1)
+print(data)
