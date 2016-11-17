@@ -1,11 +1,6 @@
-library(testthat)
-library(RMySQL, lib.loc = '/home/travis/R/Library/RMySQL/libs')
-library(devtools, lib.loc = '/home/travis/R/Library/devtools/libs')
-#install.packages("RMySQL", repos='http://cran.us.r-project.org')
-
 test_that("Otwieranie połączenia do bazy danych", {
-  mydb = dbConnect(MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
-  expect_true(inherits(mydb, "MySQLConnection"))
+  mydb = RMySQL::dbConnect(MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
+  expect_true(RMySQL::inherits(mydb, "MySQLConnection"))
 })
 
 test_that("Add", {
