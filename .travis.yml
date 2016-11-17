@@ -1,4 +1,5 @@
 warnings_are_errors: false
+os: linux
 language: r
 cache: packages
 sudo: false
