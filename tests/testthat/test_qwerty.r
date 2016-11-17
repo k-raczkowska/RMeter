@@ -1,5 +1,7 @@
+library(testthat)
+
 test_that("Otwieranie połączenia do bazy danych", {
-  mydb = RMySQL::dbConnect(MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
+  mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
   expect_true(RMySQL::inherits(mydb, "MySQLConnection"))
 })
 
