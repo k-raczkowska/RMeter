@@ -20,5 +20,5 @@ Suggests:
     RMySQL,
     RSQLite,
     RPostgreSQL,
-RPostgres
+    RPostgres
 RoxygenNote: 5.0.1
