@@ -1,6 +1,6 @@
 library(testthat)
-library(devtools, lib.loc = '/home/travis/R/Library/RMySQL/libs')
-library(RMySQL)
+library(RMySQL, lib.loc = '/home/travis/R/Library/RMySQL/libs')
+library(devtools, lib.loc = '/home/travis/R/Library/devtools/libs')
 #install.packages("RMySQL", repos='http://cran.us.r-project.org')
 
 test_that("Otwieranie połączenia do bazy danych", {
@@ -9,5 +9,5 @@ test_that("Otwieranie połączenia do bazy danych", {
 })
 
 test_that("Add", {
-  expect_equal(2+2, 4)
+  expect_equal(2+2, 4) 
 })
