@@ -13,12 +13,6 @@ Imports:
     DBI,
     R6
 Suggests:
-    knitr,
-    rmarkdown,
     testthat,
-    dplyr,
     RMySQL,
-    RSQLite,
-    RPostgreSQL,
-    RPostgres
 RoxygenNote: 5.0.1
