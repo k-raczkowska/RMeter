@@ -1,5 +1,5 @@
 library(testthat)
-library(devtools)
+library(devtools, lib.loc = '/home/travis/R/Library/RMySQL/libs')
 library(RMySQL)
 #install.packages("RMySQL", repos='http://cran.us.r-project.org')
 
