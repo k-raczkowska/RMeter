@@ -1,4 +1,4 @@
-
+install.packages("httpuv")
 
 # httr::oauth_endpoint("github", "authorize", "access_token", base_url = "https://github.com/login/oauth")
 myapp <- httr::oauth_app("github", "eb0e2d954e3c072e0e05", "59e73934db0cc7e51363d7c3b59c6daa35629b2b")

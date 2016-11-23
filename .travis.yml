@@ -16,7 +16,9 @@ before_script:
 r_packages:
   - devtools
   - testthat
+  - httpuv
 r_github_packages:
   - hadley/devtools
   - hadley/testthat
+  - eddelbuettel/httpuv
 
