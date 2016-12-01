@@ -1,4 +1,1 @@
-library(testthat)
-library(RMeter)
-
-test_check("RMeter")
+testthat::test_check("RMeter")
