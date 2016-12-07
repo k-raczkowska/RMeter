@@ -17,7 +17,8 @@ printing <- function() {
   print("Hello, world!")
 }
 printing()
-mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
+# jesli na bazie lokalnej jest haslo, to trzeba dodac parametr password
+mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', dbname = 'travistorrent', host = 'localhost')
 rs=RMySQL::dbSendQuery(mydb, "select count(*) from travistorrent_27_10_2016")
 data = DBI::dbFetch(rs, n=1)
 print(data)
