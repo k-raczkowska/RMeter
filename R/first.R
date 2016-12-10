@@ -8,8 +8,9 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 source('sqlQuery.R') #call database
-
 source('calculateCorr.R')
+#install.packages("corrplot")
+
 library(devtools)
 library(testthat)
 library(RMySQL)
@@ -22,10 +23,20 @@ library(RMySQL)
 
 # Wywolanie funckji odpowiedzialnej za zapytanie do bazy
 result = sqlQuery("select gh_project_name,gh_team_size,
-                  tr_build_number,gh_test_churn, gh_src_churn,gh_files_added,
+                  gh_num_issue_comments, gh_num_commit_comments,gh_num_pr_comments,
+                  
+                  gh_test_churn, gh_src_churn,gh_files_added,
                   gh_files_deleted,gh_files_modified,gh_tests_added,gh_tests_deleted,
-                  gh_src_files,gh_sloc,gh_test_lines_per_kloc,gh_test_cases_per_kloc,
-                  tr_status  from travistorrent_27_10_2016 where gh_project_name ='47deg/appsly-android-rest' ")
+                  gh_src_files,
+                  gh_doc_files, gh_other_files,
+
+                  gh_sloc,gh_test_lines_per_kloc,gh_test_cases_per_kloc,
+                  gh_asserts_cases_per_kloc,gh_description_complexity,gh_pull_req_num,
+                  tr_duration, tr_setup_time,tr_tests_ok,tr_tests_fail, tr_tests_run,
+                  tr_tests_skipped,
+                  tr_ci_latency,tr_build_number,
+
+                  tr_status  from travistorrent_27_10_2016 ")
 
 # wyliczenie metryk z travistorrenta
 M=calculateCorr(result)
