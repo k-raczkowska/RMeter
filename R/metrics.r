@@ -8,6 +8,20 @@ longestChain <- function(lastBuildNo, project, status){
   return(data)
 }
 
+longestChainCommitter <- function(lastBuildNo, project, status){
+  mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
+  commit = DBI::dbGetQuery(mydb, paste("select distinct git_commit from travistorrent_27_10_2016 where tr_build_id >=", lastBuildNo, sep = ""))
+  data = DBI::dbGetQuery(mydb, paste("select distinct tr_build_id, tr_status from travistorrent_27_10_2016 t
+                                     where tr_build_number >= ", lastBuildNo, " and gh_project_name = '", project, 
+                                     "' and git_commit in (select git_commit from commits where committer_id = (select committer_id from commits where sha = ",
+                                     " (select distinct git_commit from travistorrent_27_10_2016 where tr_build_id >=", lastBuildNo,
+                                     "))) order by tr_build_id", sep=""))
+  return(data)
+}
+
+#select id from table where committer = (select committer from table where id = :id)
+#select git_commit from travistorrent where git_commit in (select id from )
+
 longestChainArray <- function(data, status){
   c = nrow(data)
   #print(c)
@@ -66,6 +80,10 @@ averageChain <- function(lastBuildNo, project, status){
   
   
   DBI::dbDisconnect(mydb)
+  return(data)
+}
+
+averageChainArray <- function(data, status){
   c = nrow(data)
   count = 0
   average = 0
@@ -124,8 +142,25 @@ coefficient <- function(lastBuildNo, project, status){
   return(result)
 }
 
+timeFromLastBuild <- function(lastBuildNo, project, status){
+  mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
+  data = DBI::dbGetQuery(mydb, paste("select tr_started_at from travistorrent_27_10_2016 where gh_project_name = '", project, "' and tr_status = '", status, "' and tr_build_number >= ", lastBuildNo, " order by tr_started_at limit 1", sep = ""))
+  DBI::dbDisconnect(mydb)
+  x = difftime(Sys.Date(), strptime(data, format = "%Y-%m-%d"), units = "days")
+  y = as.numeric(x, units="days")
+  print(data)
+  print(x)
+  print(y)
+  return(y)
+}
+
+timeFromLastCommitterBuild <- function(lastBuildNo, project, status, committer){
+  
+}
+
 x = longestChainArray(longestChain(911, "HubSpot/Singularity", 'passed'), 'passed')
 y = shortestChainArray(shortestChain(911, "HubSpot/Singularity", 'passed'), 'passed')
+z = averageChainArray(averageChain(911, "HubSpot/Singularity", 'passed'), 'passed')
 
 d = longestChain(911, "HubSpot/Singularity", 'passed')
 e = longestChain(911, "HubSpot/Singularity", 'errored')
@@ -140,3 +175,7 @@ m = averageChain(911, "HubSpot/Singularity", 'errored')
 n = averageChain(911, "HubSpot/Singularity", 'failed') 
 
 o = coefficient(911, "HubSpot/Singularity", 'failed')
+
+p = timeFromLastBuild(911, "HubSpot/Singularity", 'passed')
+
+q = longestChainCommitter(911, "HubSpot/Singularity", 'passed')
