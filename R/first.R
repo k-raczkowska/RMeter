@@ -9,14 +9,13 @@
 #   Test Package:              'Ctrl + Shift + T'
 source('sqlQuery.R') #call database
 source('calculateCorr.R')
+source('loadAllPackages.R')
 #install.packages("corrplot")
 
-library(devtools)
-library(testthat)
-library(RMySQL)
+
 
 # jesli na bazie lokalnej jest haslo, to trzeba dodac parametr password
-#mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = '6759393',dbname = 'travistorrent', host = 'localhost')
+#mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = '',dbname = 'travistorrent', host = 'localhost')
 #rs=RMySQL::dbSendQuery(mydb, "select count(*) from travistorrent_27_10_2016")
 #data = DBI::dbFetch(rs, n=1)
 #print(data)

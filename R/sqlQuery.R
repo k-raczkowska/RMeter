@@ -1,4 +1,4 @@
-library(RMySQL)
+
 #Call to database and kill connection
 sqlQuery <- function (query){
   # creating DB connection object with RMysql package
