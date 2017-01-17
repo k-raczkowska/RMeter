@@ -1,10 +1,11 @@
 longestChain <- function(lastBuildNo, project, status){
   mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
   data = DBI::dbGetQuery(mydb, paste("select distinct tr_build_id, tr_status from travistorrent_27_10_2016 
-                                     where tr_build_number >= ", lastBuildNo, " and gh_project_name = '", project, "' order by tr_build_id", sep=""))
+                                     where tr_build_number <= ", lastBuildNo, " and gh_project_name = '", project, "' order by tr_build_id", sep=""))
   
   
   DBI::dbDisconnect(mydb)
+  print(data)
   return(data)
 }
 
@@ -44,7 +45,7 @@ longestChainArray <- function(data, status){
 shortestChain <- function(lastBuildNo, project, status){
   mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = 'master', dbname = 'travistorrent', host = 'localhost')
   data = DBI::dbGetQuery(mydb, paste("select distinct tr_build_id, tr_status from travistorrent_27_10_2016 
-                                     where tr_build_number >= ", lastBuildNo, " and gh_project_name = '", project, "' order by tr_build_id", sep=""))
+                                     where tr_build_number <= ", lastBuildNo, " and gh_project_name = '", project, "' order by tr_build_id", sep=""))
   
   
   DBI::dbDisconnect(mydb)
