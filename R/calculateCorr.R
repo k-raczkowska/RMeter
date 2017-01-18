@@ -1,5 +1,5 @@
-source('~/RMeter/R/statusToValue.R')
-source('~/RMeter/R/replaceAllNA.R')
+#source('~/RMeter/R/statusToValue.R')
+#source('~/RMeter/R/replaceAllNA.R')
 
 
 calculateCorr <- function(data.frame){

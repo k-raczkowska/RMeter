@@ -1,5 +1,5 @@
-source('~/RMeter/R/loadAllPackages.R')
-source('~/RMeter/R/calculateCorr.R')
+#source('~/RMeter/R/loadAllPackages.R')
+#source('~/RMeter/R/calculateCorr.R')
 
 load("~/RMeter/first.rda")
 
