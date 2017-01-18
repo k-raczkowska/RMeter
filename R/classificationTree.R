@@ -20,17 +20,15 @@ fit <- rpart::rpart(tr_status ~ gh_team_size + gh_num_commit_comments + gh_src_c
 #summary(fit); # detailed summary of splits
 
 # plot tree 
-png(filename="Wykresy/ClassificationTree.png");
+#png(filename="Wykresy/ClassificationTree.png");
 plot(fit, uniform=TRUE, 
      main="Classification Tree for build status");
 text(fit, use.n=TRUE, all=TRUE, cex=.8);
-dev.off();
-dev.off();
+#dev.off();
+#dev.off();
 # create attractive postscript plot of tree 
-post(fit, file = "Dane/ClassificationTree.ps", 
+rpart::post(fit, file = "Dane/ClassificationTree.ps", 
      title = "Classification Tree for build status");
-
-
 
 # prune the tree 
 pfit<- rpart::prune(fit, cp=   fit$cptable[which.min(fit$cptable[,"xerror"]),"CP"]);
