@@ -11,7 +11,7 @@ sqlQuery <- function (query){
   result <- fetch(rs, -1)
 
   # close db connection
-  dbDisconnect(DB)
+  RMySQL::dbDisconnect(DB)
 
   # return the dataframe
   return(result)
