@@ -7,6 +7,7 @@ install.packages("qtlcharts")
 install.packages("rpart")
 install.packages("mlbench")
 install.packages("caret")
+install.packages("randomForest")
 
 
 library(devtools)

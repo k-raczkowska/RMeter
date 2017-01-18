@@ -24,16 +24,22 @@ result = sqlQuery("select gh_project_name,gh_team_size,
 # wyliczenie korelacji z travistorrenta
 M=calculateCorr(result)
 
-#transformacja danych na potrzeby 
+#transformacja danych na potrzeby klasyfikacji
 resultCP <- result
 resultCP[result=="errored"] <- "failed"
 resultCP[result=="canceled"] <- "passed"
 resultCP$tr_status <- factor(resultCP$tr_status)
 
-source('rankFeaturesByImportance.R')
+#source('rankFeaturesByImportance.R') # selecting features for classyfication
 source('classificationTree.R')
+accuracyClass <- returnAccuracyClass();
+cat("Accuracy of classification tree: ", accuracyClass)
+
 source('regressionTree.R')
+#accuracyReg <- returnAccuracyReg();
 source('randomForest.R')
+accuracyRandFor <- returnAccuracyRandFor();
+cat("\nAccuracy of Random Forest algorithm: ", accuracyRandFor)
 
 
 

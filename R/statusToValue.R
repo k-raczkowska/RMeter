@@ -14,9 +14,9 @@ statusToValue <- function(data.frame){
                        df$tr_tests_fail,df$tr_tests_run,df$tr_tests_skipped, 
                        df$tr_ci_latency,df$tr_build_number,
                        sapply(df$tr_status,
-                                                  switch,'errored'= "failed",
-                                                  'failed'= "failed",'passed'= "passed",
-                                                  'canceled'="passed"))
+                                                  switch,'errored'= 0,
+                                                  'failed'= 0,'passed'= 1,
+                                                  'canceled'=1))
 
   names(result) <- c("Project_name", "Team_size","Num issue comments","Num commit comments",
                      "Num pr comments","Test churn","Src churn","Files added","Files deleted " ,

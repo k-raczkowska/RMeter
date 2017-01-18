@@ -39,8 +39,10 @@ calculateCorr <- function(data.frame){
   M=cor(df[,2:30])
  # col<- colorRampPalette(c("blue", "white", "red"))(20)
  # heatmap(x = M, col = col, symm = TRUE)
+  png(filename="Wykresy/CorrelationMatrix.png");
   corrplot(M, type = "upper", order = "hclust", 
-                    tl.col = "black", tl.srt = 45)
+                    tl.col = "black", tl.srt = 45);
+  dev.off();
   #corrplot(M, method = "circle")
   
   # 
