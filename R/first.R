@@ -1,22 +1,8 @@
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Build and Reload Package:  'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
-#source('sqlQuery.R') #call database
-source('~/RMeter3/R/calculateCorr.R')
-load("~/RMeter3/first.rda")
-#install.packages("corrplot")
+source('~/RMeter/R/loadAllPackages.R')
+source('~/RMeter/R/sqlQuery.R') #call database
+source('~/RMeter/R/calculateCorr.R')
 
-# jesli na bazie lokalnej jest haslo, to trzeba dodac parametr password
-#mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = '6759393',dbname = 'travistorrent', host = 'localhost')
-#rs=RMySQL::dbSendQuery(mydb, "select count(*) from travistorrent_27_10_2016")
-#data = DBI::dbFetch(rs, n=1)
-#print(data)
+load("~/RMeter3/first.rda")
 
 # Wywolanie funckji odpowiedzialnej za zapytanie do bazy
 #result = sqlQuery("select gh_project_name,gh_team_size,
@@ -26,14 +12,31 @@ load("~/RMeter3/first.rda")
 #                  gh_files_deleted,gh_files_modified,gh_tests_added,gh_tests_deleted,
 #                  gh_src_files,
 #                  gh_doc_files, gh_other_files,
-
+#                  
 #                  gh_sloc,gh_test_lines_per_kloc,gh_test_cases_per_kloc,
 #                  gh_asserts_cases_per_kloc,gh_description_complexity,gh_pull_req_num,
 #                  tr_duration, tr_setup_time,tr_tests_ok,tr_tests_fail, tr_tests_run,
 #                  tr_tests_skipped,
 #                  tr_ci_latency,tr_build_number,
-
+#                  
 #                  tr_status  from travistorrent_27_10_2016 ")
-# wyliczenie metryk z travistorrenta
-load("~/RMeter3/first.rda")
-M = calculateCorr(result)
+
+# wyliczenie korelacji z travistorrenta
+M=calculateCorr(result)
+
+#transformacja danych na potrzeby klasyfikacji
+resultCP <- result
+resultCP[result=="errored"] <- "failed"
+resultCP[result=="canceled"] <- "passed"
+resultCP$tr_status <- factor(resultCP$tr_status)
+
+#source('rankFeaturesByImportance.R') # selecting features for classyfication
+source('classificationTree.R')
+accuracyClass <- returnAccuracyClass();
+cat("Accuracy of classification tree: ", accuracyClass)
+
+source('regressionTree.R')
+#accuracyReg <- returnAccuracyReg();
+source('randomForest.R')
+accuracyRandFor <- returnAccuracyRandFor();
+cat("\nAccuracy of Random Forest algorithm: ", accuracyRandFor)
