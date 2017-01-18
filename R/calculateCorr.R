@@ -1,3 +1,5 @@
+source("~/RMeter3/R/statusToValue.R")
+
 calculateCorr <- function(data.frame){
   
   

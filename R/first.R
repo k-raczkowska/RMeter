@@ -12,10 +12,6 @@ source('~/RMeter3/R/calculateCorr.R')
 load("~/RMeter3/first.rda")
 #install.packages("corrplot")
 
-library(devtools)
-library(testthat)
-library(RMySQL)
-
 # jesli na bazie lokalnej jest haslo, to trzeba dodac parametr password
 #mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = '6759393',dbname = 'travistorrent', host = 'localhost')
 #rs=RMySQL::dbSendQuery(mydb, "select count(*) from travistorrent_27_10_2016")
