@@ -8,7 +8,7 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 #source('sqlQuery.R') #call database
-source('calculateCorr.R')
+source('~/RMeter3/R/calculateCorr.R')
 load("~/RMeter3/first.rda")
 #install.packages("corrplot")
 
@@ -39,5 +39,5 @@ library(RMySQL)
 
 #                  tr_status  from travistorrent_27_10_2016 ")
 # wyliczenie metryk z travistorrenta
-
+load("~/RMeter3/first.rda")
 M = calculateCorr(result)
