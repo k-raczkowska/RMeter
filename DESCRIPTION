@@ -11,7 +11,9 @@ Depends:
     R (>= 3.0.0)
 Imports:
     DBI,
-    R6
+    R6,
+    caret,
+    e1071,
 Suggests:
     testthat,
     RMySQL,

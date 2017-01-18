@@ -11,9 +11,9 @@ fit <- randomForest::randomForest(tr_status ~ gh_team_size + gh_num_commit_comme
 #importance(fit); # importance of each predictor
 
 preds <- stats::predict(fit, resultCP);
-matrix <- confusionMatrix(preds,resultCP$tr_status);
+matrix <- caret::confusionMatrix(preds,resultCP$tr_status);
 tofile <- data.frame(cbind(t(matrix$overall),t(matrix$byClass)));
-write.table(tofile,file="MacierzeKorelacji/ConfMatrixRandomForest.txt",sep='\t');
+write.table(tofile,file="~/RMeter3/R/MacierzeKorelacji/ConfMatrixRandomForest.txt",sep='\t');
 
 returnAccuracyRandFor <- function(){
   
