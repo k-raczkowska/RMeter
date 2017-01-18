@@ -1,4 +1,6 @@
-source("~/RMeter3/R/statusToValue.R")
+source('~/RMeter3/R/statusToValue.R')
+source('~/RMeter3/R/replaceAllNA.R')
+
 
 calculateCorr <- function(data.frame){
   
@@ -36,8 +38,8 @@ calculateCorr <- function(data.frame){
   M=cor(df[,2:30])
  # col<- colorRampPalette(c("blue", "white", "red"))(20)
  # heatmap(x = M, col = col, symm = TRUE)
-  corrplot(M, type = "upper", order = "hclust", 
-                    tl.col = "black", tl.srt = 45)
+  #corrplot(M, type = "upper", order = "hclust", 
+                    #tl.col = "black", tl.srt = 45)
   #corrplot(M, method = "circle")
   
   # 
