@@ -1,7 +1,6 @@
 source('statusToValue.R')
 source('replaceAllNA.R')
-library('corrplot')
-library('qtlcharts')
+
 
 
 calculateCorr <- function(data.frame){

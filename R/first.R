@@ -1,25 +1,8 @@
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Build and Reload Package:  'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
+source('loadAllPackages.R')
 source('sqlQuery.R') #call database
 source('calculateCorr.R')
-#install.packages("corrplot")
 
-library(devtools)
-library(testthat)
-library(RMySQL)
 
-# jesli na bazie lokalnej jest haslo, to trzeba dodac parametr password
-#mydb = RMySQL::dbConnect(RMySQL::MySQL(), user = 'root', password = '6759393',dbname = 'travistorrent', host = 'localhost')
-#rs=RMySQL::dbSendQuery(mydb, "select count(*) from travistorrent_27_10_2016")
-#data = DBI::dbFetch(rs, n=1)
-#print(data)
 
 # Wywolanie funckji odpowiedzialnej za zapytanie do bazy
 result = sqlQuery("select gh_project_name,gh_team_size,
@@ -38,5 +21,20 @@ result = sqlQuery("select gh_project_name,gh_team_size,
 
                   tr_status  from travistorrent_27_10_2016 ")
 
-# wyliczenie metryk z travistorrenta
+# wyliczenie korelacji z travistorrenta
 M=calculateCorr(result)
+
+#transformacja danych na potrzeby 
+resultCP <- result
+resultCP[result=="errored"] <- "failed"
+resultCP[result=="canceled"] <- "passed"
+resultCP$tr_status <- factor(resultCP$tr_status)
+
+source('rankFeaturesByImportance.R')
+source('classificationTree.R')
+source('regressionTree.R')
+source('randomForest.R')
+
+
+
+
