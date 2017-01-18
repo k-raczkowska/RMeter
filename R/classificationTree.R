@@ -3,7 +3,7 @@
 # gh_doc_files,  gh_files_deleted 
 # Classification Tree with rpart
 # Very important comment
-library(rpart)
+
 
 # grow tree 
 fit <- rpart(tr_status ~ gh_team_size + gh_num_commit_comments + gh_src_churn +

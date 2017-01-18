@@ -4,9 +4,8 @@
 
 # ensure results are repeatable
 set.seed(7)
-# load the library
-library(mlbench)
-library(caret)
+
+
 
 
 # prepare training scheme

@@ -1,5 +1,5 @@
 # Regression Tree Example
-library(rpart)
+
 
 # grow tree 
 fit <- rpart(tr_status ~ gh_team_size + gh_num_commit_comments + gh_src_churn +
