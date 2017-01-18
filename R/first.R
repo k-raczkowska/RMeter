@@ -1,7 +1,7 @@
-source('~/RMeter3/R/loadAllPackages.R')
-source('~/RMeter3/R/calculateCorr.R')
+source('~/RMeter/R/loadAllPackages.R')
+source('~/RMeter/R/calculateCorr.R')
 
-load("~/RMeter3/first.rda")
+load("~/RMeter/first.rda")
 
 # Wywolanie funckji odpowiedzialnej za zapytanie do bazy
 #result = sqlQuery("select gh_project_name,gh_team_size,
@@ -30,12 +30,12 @@ resultCP[result=="canceled"] <- "passed"
 resultCP$tr_status <- factor(resultCP$tr_status)
 
 #source('rankFeaturesByImportance.R') # selecting features for classyfication
-source('~/RMeter3/R/classificationTree.R')
+source('~/RMeter/R/classificationTree.R')
 accuracyClass <- returnAccuracyClass();
 cat("Accuracy of classification tree: ", accuracyClass)
 
-source('~/RMeter3/R/regressionTree.R')
+source('~/RMeter/R/regressionTree.R')
 #accuracyReg <- returnAccuracyReg();
-source('~/RMeter3/R/randomForest.R')
+source('~/RMeter/R/randomForest.R')
 accuracyRandFor <- returnAccuracyRandFor();
 cat("\nAccuracy of Random Forest algorithm: ", accuracyRandFor)

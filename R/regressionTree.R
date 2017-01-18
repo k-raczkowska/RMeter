@@ -1,5 +1,5 @@
 # Regression Tree Example
-load("~/RMeter3/first.rda")
+load("~/RMeter/first.rda")
 
 resultCP <- result
 resultCP[result=="errored"] <- "failed"
@@ -19,25 +19,25 @@ fit <- rpart::rpart(tr_status ~ gh_team_size + gh_num_commit_comments + gh_src_c
 #rpart::rsq.rpart(fit); # visualize cross-validation results  	
 
 # plot tree 
-png(filename="~/RMeter3/R/Wykresy/RegressionTree.png");
+png(filename="~/RMeter/R/Wykresy/RegressionTree.png");
 plot(fit, uniform=TRUE, 
      main="Regression Tree for Build status ");
 text(fit, use.n=TRUE, all=TRUE, cex=.8);
 dev.off();
 
 # create attractive postcript plot of tree 
-rpart::post(fit, file = "~/RMeter3/R/Dane/RegressionTree.ps", 
+rpart::post(fit, file = "~/RMeter/R/Dane/RegressionTree.ps", 
      title = "Regression Tree for Build status ");
 # prune the tree 
 pfit<- rpart::prune(fit, cp=0.01160389); # from cptable   
 
 # plot the pruned tree 
-png(filename="~/RMeter3/R/Wykresy/RegressionPrunedTree.png");
+png(filename="~/RMeter/R/Wykresy/RegressionPrunedTree.png");
 plot(pfit, uniform=TRUE, 
      main="Pruned Regression Tree for Build status");
 text(pfit, use.n=TRUE, all=TRUE, cex=.8)
 dev.off();
-rpart::post(pfit, file = "~/RMeter3/R/Dane/RegressionPrunedTree.ps", 
+rpart::post(pfit, file = "~/RMeter/R/Dane/RegressionPrunedTree.ps", 
      title = "Pruned Regression Tree for Build status");
 
 #preds <- stats::predict(pfit, resultCP);
