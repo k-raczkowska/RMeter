@@ -21,4 +21,9 @@ r_github_packages:
   - hadley/devtools
   - hadley/testthat
   - eddelbuettel/httpuv
+branches:
+  only:
+    - master
+    - package
+    - karolina
 

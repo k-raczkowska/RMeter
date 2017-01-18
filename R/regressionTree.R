@@ -26,7 +26,7 @@ text(fit, use.n=TRUE, all=TRUE, cex=.8);
 dev.off();
 
 # create attractive postcript plot of tree 
-post(fit, file = "~/RMeter3/R/Dane/RegressionTree.ps", 
+rpart::post(fit, file = "~/RMeter3/R/Dane/RegressionTree.ps", 
      title = "Regression Tree for Build status ");
 # prune the tree 
 pfit<- rpart::prune(fit, cp=0.01160389); # from cptable   

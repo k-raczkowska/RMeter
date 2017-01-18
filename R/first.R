@@ -1,6 +1,5 @@
-source('~/RMeter/R/loadAllPackages.R')
-source('~/RMeter/R/sqlQuery.R') #call database
-source('~/RMeter/R/calculateCorr.R')
+source('~/RMeter3/R/loadAllPackages.R')
+source('~/RMeter3/R/calculateCorr.R')
 
 load("~/RMeter3/first.rda")
 
@@ -31,12 +30,12 @@ resultCP[result=="canceled"] <- "passed"
 resultCP$tr_status <- factor(resultCP$tr_status)
 
 #source('rankFeaturesByImportance.R') # selecting features for classyfication
-source('classificationTree.R')
+source('~/RMeter3/R/classificationTree.R')
 accuracyClass <- returnAccuracyClass();
 cat("Accuracy of classification tree: ", accuracyClass)
 
-source('regressionTree.R')
+source('~/RMeter3/R/regressionTree.R')
 #accuracyReg <- returnAccuracyReg();
-source('randomForest.R')
+source('~/RMeter3/R/randomForest.R')
 accuracyRandFor <- returnAccuracyRandFor();
 cat("\nAccuracy of Random Forest algorithm: ", accuracyRandFor)
