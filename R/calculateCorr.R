@@ -42,7 +42,7 @@ calculateCorr <- function(data.frame){
   png(filename="Wykresy/CorrelationMatrix.png");
   corrplot(M, type = "upper", order = "hclust", 
                     tl.col = "black", tl.srt = 45);
-  dev.off();
+  #dev.off();
   #corrplot(M, method = "circle")
   
   # 

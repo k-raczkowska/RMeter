@@ -20,7 +20,7 @@ plot(fit, uniform=TRUE,
      main="Classification Tree for build status");
 text(fit, use.n=TRUE, all=TRUE, cex=.8);
 dev.off();
-
+dev.off();
 # create attractive postscript plot of tree 
 post(fit, file = "Dane/ClassificationTree.ps", 
      title = "Classification Tree for build status");
@@ -34,8 +34,8 @@ pfit<- rpart::prune(fit, cp=   fit$cptable[which.min(fit$cptable[,"xerror"]),"CP
 png(filename="Wykresy/ClassificationPrunedTree.png");
 plot(pfit, uniform=TRUE, 
      main="Pruned Classification Tree for build status");
-dev.off();
 text(pfit, use.n=TRUE, all=TRUE, cex=.8);
+dev.off();
 
 post(pfit, file = "Dane/ClassificationPrunedTree.ps", 
      title = "Pruned Classification Tree build status");
